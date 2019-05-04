@@ -447,6 +447,16 @@
               <FileType>1</FileType>
               <FilePath>.\IO.c</FilePath>
             </File>
+            <File>
+              <FileName>Arrow.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Arrow.c</FilePath>
+            </File>
+            <File>
+              <FileName>Arrow.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Arrow.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

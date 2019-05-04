@@ -80,9 +80,9 @@ ARM Macro Assembler    Page 2
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\random.d -o.\random.o -I.\RTE\_Etterna -IC:\Keil_v5\ARM\PACK\
 ARM\CMSIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\De
-vice\Include\TM4C123 --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VER
-SION SETA 526" --predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA 1" --l
-ist=.\random.lst random.s
+vice\Include\TM4C123 --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1
+" --predefine="__UVISION_VERSION SETA 526" --predefine="_RTE_ SETA 1" --predefi
+ne="TM4C123GH6PM SETA 1" --list=.\random.lst random.s
 
 
 
@@ -147,4 +147,4 @@ Symbol: Random_Init
       At line 19 in file random.s
 Comment: Random_Init used once
 4 symbols
-343 symbols in table
+344 symbols in table

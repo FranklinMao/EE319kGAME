@@ -25,8 +25,8 @@
 #include "DAC.h"
 #include "Sound.h"
 #include "../inc/tm4c123gh6pm.h"
-	
-uint32_t si=0;
+#include "Arrow.h"	
+
 	
 // ***************** Timer0_Init ****************
 // Activate TIMER0 interrupts to run user task periodically
@@ -51,6 +51,7 @@ void Timer0_Init(uint32_t period){
 
 void Timer0A_Handler(void){
   TIMER0_ICR_R = TIMER_ICR_TATOCINT;// acknowledge TIMER0A timeout
-	DAC_Out(BK[si]);
-	si++;
+	checkarr[0]=Leftarray[ArrowIndex];
+	LeftArrow.yPosition--;
+	ArrowIndex++;
 }

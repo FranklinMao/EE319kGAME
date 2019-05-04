@@ -64,6 +64,9 @@
 #include "TExaS.h"
 #include "Timer0.h"
 #include "Timer1.h"
+#include "Arrow.h"
+
+#define maxindex 10000000      //placeholder value, once ArrayIndex reaches this then the game is over
 
 void Init(void){
 PLL_Init(Bus80MHz);    // set system clock to 80 MHz
@@ -71,7 +74,7 @@ DAC_Init();
 //ADC_Init();
 //Sound_Init();	
 IO_Init();		
-Timer0_Init(40000);
+Timer0_Init(40000);				//timer0 is for updating arrows
 //Timer1_Init(PLACE PERIOD HERE); //(1/FREQ)/(12.5 x 10^-9)	
 ST7735_InitR(INITR_REDTAB);
 }
@@ -100,6 +103,17 @@ int main(void){
 	ST7735_DrawBitmap(36, 96, Arrow_Down, 24, 24);
 	ST7735_DrawBitmap(68, 96, Arrow_Up, 24, 24);
 	ST7735_DrawBitmap(100, 96, Arrow_Right, 24, 24); 
+
+	while(1){
+		if(isTouch(LeftArrow)==1){
+			LeftArrow.yPosition=0;
+			checkarr[0]=0;
+		}
+		if(checkarr[0]==1){
+			ST7735_DrawBitmap(LeftArrow.xPosition, LeftArrow.yPosition, Arrow_Left, 24, 24);
+		}
+		
+  }
 	
 	IO_Touch();
 	ST7735_FillScreen(0x0000);            // set screen to black
@@ -111,8 +125,7 @@ int main(void){
 	ST7735_OutString("Earthling!");
 	ST7735_SetCursor(2, 4);
 	LCD_OutDec(1234);
-  while(1){
-  }
+
 
 }
 

@@ -213,9 +213,9 @@ ARM Macro Assembler    Page 4
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=.\lcd.d -o.\lcd.o -I.\RTE\_Etterna -IC:\Keil_v5\ARM\PACK\ARM\CM
 SIS\5.4.0\CMSIS\Core\Include -IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\I
-nclude\TM4C123 --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION S
-ETA 526" --predefine="_RTE_ SETA 1" --predefine="TM4C123GH6PM SETA 1" --list=.\
-lcd.lst LCD.s
+nclude\TM4C123 --predefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --pr
+edefine="__UVISION_VERSION SETA 526" --predefine="_RTE_ SETA 1" --predefine="TM
+4C123GH6PM SETA 1" --list=.\lcd.lst LCD.s
 
 
 
@@ -353,4 +353,4 @@ Symbol: SSI_SR_TNF
       At line 107 in file LCD.s
 Comment: SSI_SR_TNF used once
 8 symbols
-351 symbols in table
+352 symbols in table
