@@ -32,7 +32,7 @@ F (.\PLL.c)(0x5545A0E2)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=i
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599FA01E)
 I (PLL.h)(0x5BF4770A)
 I (../inc/tm4c123gh6pm.h)(0x5388C2DA)
-F (.\Etterna.c)(0x5CCD5469)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Etterna-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="526" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\etterna.o --omf_browse .\etterna.crf --depend .\etterna.d)
+F (.\Etterna.c)(0x5CCD5512)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Etterna-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="526" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\etterna.o --omf_browse .\etterna.crf --depend .\etterna.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599FA01E)
 I (../inc/tm4c123gh6pm.h)(0x5388C2DA)
 I (ST7735.h)(0x5BF4770A)
@@ -43,7 +43,7 @@ I (DAC.h)(0x5CCBA9F5)
 I (Images.h)(0x5CCBAC0B)
 I (Sound.h)(0x5CCD4DCE)
 I (Timer0.h)(0x5CCD120A)
-I (Timer1.h)(0x56D7222A)
+I (Timer1.h)(0x5CCD5522)
 I (IO.h)(0x5AB1308E)
 I (TExaS.h)(0x5AB12E1C)
 F (.\IO.c)(0x5CCC2922)(--c99 -c --cpu Cortex-M4.fp -D__MICROLIB -g -O0 --apcs=interwork --split_sections --signed_chars -I .. -I ..\..\.. --C99-I.\RTE\_Etterna-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.4.0\CMSIS\Core\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="526" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_LM4F120H5QR-o .\io.o --omf_browse .\io.crf --depend .\io.d)

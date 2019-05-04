@@ -63,6 +63,7 @@
 #include "IO.h"
 #include "TExaS.h"
 #include "Timer0.h"
+#include "Timer1.h"
 
 void Init(void){
 PLL_Init(Bus80MHz);    // set system clock to 80 MHz
