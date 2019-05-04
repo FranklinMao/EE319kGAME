@@ -62,6 +62,7 @@
 #include "Timer1.h"
 #include "IO.h"
 #include "TExaS.h"
+#include "Timer0.h"
 
 void Init(void){
 PLL_Init(Bus80MHz);    // set system clock to 80 MHz
@@ -69,9 +70,9 @@ DAC_Init();
 //ADC_Init();
 //Sound_Init();	
 IO_Init();		
-
+Timer0_Init(40000);
+//Timer1_Init(PLACE PERIOD HERE); //(1/FREQ)/(12.5 x 10^-9)	
 ST7735_InitR(INITR_REDTAB);
-	
 }
 
 void DisableInterrupts(void); // Disable interrupts
@@ -81,7 +82,13 @@ void Delay100ms(uint32_t count); // time delay in 0.1 seconds
 
 int main(void){
 	Init();
-	
+/*	
+	while(1){
+		if(GPIO_PORTE_DATA_R == 0x01){ // Testing PE0 for Microswitch(Lever)/Click Input
+			GPIO_PORTF_DATA_R ^= 0x02;	
+			GPIO_PORTF_DATA_R ^= 0x04;
+		}
+	}*/	
 	ST7735_FillScreen(0);
 	IO_Touch();
 	ST7735_DrawBitmap(4, 48, Static_Left, 24, 24);

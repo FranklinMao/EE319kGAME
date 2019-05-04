@@ -967,10 +967,13 @@ void ST7735_DrawBitmap(int16_t x, int16_t y, const uint16_t *image, int16_t w, i
 
   for(y=0; y<h; y=y+1){
     for(x=0; x<w; x=x+1){
+			
+//			if( (uint8_t)(image[i]) != 0x00){	// TRANSPARENCY STATEMENT > NEED TO CHANGE VALUE FROM 0x00(BLACK) TO SOME OTHER COLOR WE DON'T USE. DON'T FORGET!
                                         // send the top 8 bits
       writedata((uint8_t)(image[i] >> 8));
                                         // send the bottom 8 bits
       writedata((uint8_t)image[i]);
+//			} 
       i = i + 1;                        // go to the next pixel
     }
     i = i + skipC;
