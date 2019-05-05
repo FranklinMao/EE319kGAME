@@ -71,11 +71,8 @@
 void Init(void){
 PLL_Init(Bus80MHz);    // set system clock to 80 MHz
 DAC_Init();
-//ADC_Init();
-//Sound_Init();	
+//ADC_Init();	
 IO_Init();		
-Timer0_Init(40000);				//timer0 is for updating arrows
-//Timer1_Init(PLACE PERIOD HERE); //(1/FREQ)/(12.5 x 10^-9)	
 ST7735_InitR(INITR_REDTAB);
 }
 
@@ -94,23 +91,18 @@ int main(void){
 		}
 	}*/	
 	ST7735_FillScreen(0);
-	IO_Touch();
-	ST7735_DrawBitmap(4, 48, Static_Left, 24, 24);
-	ST7735_DrawBitmap(36, 48, Static_Down, 24, 24);
-	ST7735_DrawBitmap(68, 48, Static_Up, 24, 24);
-	ST7735_DrawBitmap(100, 48, Static_Right, 24, 24);
-	ST7735_DrawBitmap(4, 96, Arrow_Left, 24, 24);
-	ST7735_DrawBitmap(36, 96, Arrow_Down, 24, 24);
-	ST7735_DrawBitmap(68, 96, Arrow_Up, 24, 24);
-	ST7735_DrawBitmap(100, 96, Arrow_Right, 24, 24); 
-
+	Timer0_Init(4000);				//timer0 is for updating arrows
+	Timer1_Init(40000); //(1/FREQ)/(12.5 x 10^-9)	
 	while(1){
-		
-		
+		ST7735_DrawBitmap(4, 48, Static_Left, 24, 24);
 		if(checkarr[0]==1){
-			ST7735_DrawBitmap(LeftArrow.xPosition, LeftArrow.yPosition, Arrow_Left, 24, 24);
+			ST7735_FillRect(LeftArrow.xPosition, (LeftArrow.yPosition + 1), 0x0000, 24, 24);
+			ST7735_DrawPicture(LeftArrow.xPosition, LeftArrow.yPosition, Arrow_Left, 24, 24);
+			LeftArrow.yPosition--;
 		}
-		
+		isTouch(LeftArrow);
+//		for(int c = 0; c < 500000; c++){}
+		count++;
   }
 	
 	IO_Touch();

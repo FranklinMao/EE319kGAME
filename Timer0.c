@@ -55,7 +55,4 @@ void Timer0A_Handler(void){
 		checkarr[0]=1;												//if count reaches a predetermined value in leftarray, set left arrow to on
 		LeftIndex++;													// go to next sequence in leftarray
 	}
-
-	LeftArrow.yPosition--;
-	count++;
 }

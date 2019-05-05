@@ -1,6 +1,6 @@
 .\etterna.o: Etterna.c
 .\etterna.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
-.\etterna.o: ..\../inc/tm4c123gh6pm.h
+.\etterna.o: ../inc/tm4c123gh6pm.h
 .\etterna.o: ST7735.h
 .\etterna.o: Random.h
 .\etterna.o: PLL.h

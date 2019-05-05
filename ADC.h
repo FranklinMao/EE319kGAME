@@ -4,10 +4,11 @@
 
 // Student names: Franklin Mao & Ronak Patel
 // Last modification date: change this to the last modification date or look very silly
-#include <stdint.h>
+
 // ADC initialization function 
 // Input: none
 // Output: none
+#include <stdint.h>
 void ADC_Init(void);
 
 //------------ADC_In------------

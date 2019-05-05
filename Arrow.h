@@ -1,6 +1,6 @@
 //Arrow.h
 #include <stdint.h>
-struct Arrow{
+ struct Arrow{
 	int xPosition;
 	int yPosition;
 };

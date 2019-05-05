@@ -51,8 +51,8 @@ void Timer1_Init(uint32_t period){
 }
 
 void Timer1A_Handler(void){
+	TIMER1_ICR_R = TIMER_ICR_TATOCINT;// acknowledge TIMER1A timeout	
 	if(si < 69248){
-		TIMER1_ICR_R = TIMER_ICR_TATOCINT;// acknowledge TIMER1A timeout
 		DAC_Out(BK[si]);
 		si++;
 	}
