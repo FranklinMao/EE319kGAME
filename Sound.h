@@ -8,4 +8,4 @@
 
 void Sound_Init(void);
 
-extern const unsigned char BK[121110];
+extern const unsigned char BK[69248];

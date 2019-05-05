@@ -25,7 +25,9 @@
 #include "DAC.h"
 #include "Sound.h"
 #include "../inc/tm4c123gh6pm.h"
+	
 uint32_t si=0;
+
 
 // ***************** TIMER1_Init ****************
 // Activate TIMER1 interrupts to run user task periodically
@@ -49,7 +51,10 @@ void Timer1_Init(uint32_t period){
 }
 
 void Timer1A_Handler(void){
-  TIMER1_ICR_R = TIMER_ICR_TATOCINT;// acknowledge TIMER1A timeout
-  //	DAC_Out(BK[si]);
-	si++;
+	if(si < 69248){
+		TIMER1_ICR_R = TIMER_ICR_TATOCINT;// acknowledge TIMER1A timeout
+		DAC_Out(BK[si]);
+		si++;
+	}
+	else{ si = 0; }
 }

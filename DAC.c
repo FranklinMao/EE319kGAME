@@ -22,8 +22,8 @@ void DAC_Init(void){
 	SYSCTL_RCGCGPIO_R |= 0X02;
 	while((SYSCTL_RCGCGPIO_R&0X02)==0){
 	}
-	GPIO_PORTB_DIR_R |=0X2F;
-	GPIO_PORTB_DEN_R |=0X2F;
+	GPIO_PORTB_DIR_R |=0X1F;
+	GPIO_PORTB_DEN_R |=0X1F;
 }
 
 // **************DAC_Out*********************
