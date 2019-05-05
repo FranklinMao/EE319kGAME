@@ -67,6 +67,10 @@
 #include "Arrow.h"
 
 #define maxindex 10000000      //placeholder value, once ArrayIndex reaches this then the game is over
+#define Left 0
+#define Down 1
+#define Up 2
+#define Right 3
 
 void Init(void){
 PLL_Init(Bus80MHz);    // set system clock to 80 MHz
@@ -79,7 +83,7 @@ ST7735_InitR(INITR_REDTAB);
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void Delay100ms(uint32_t count); // time delay in 0.1 seconds
-
+extern int Combo;
 
 int main(void){
 	Init();
@@ -90,18 +94,112 @@ int main(void){
 			GPIO_PORTF_DATA_R ^= 0x04;
 		}
 	}*/	
+	
 	ST7735_FillScreen(0);
 	Timer0_Init(4000);				//timer0 is for updating arrows
 	Timer1_Init(40000); //(1/FREQ)/(12.5 x 10^-9)	
+	
 	while(1){
-		ST7735_DrawBitmap(4, 48, Static_Left, 24, 24);
-		if(checkarr[0]==1){
-			ST7735_FillRect(LeftArrow.xPosition, (LeftArrow.yPosition + 1), 0x0000, 24, 24);
-			ST7735_DrawPicture(LeftArrow.xPosition, LeftArrow.yPosition, Arrow_Left, 24, 24);
-			LeftArrow.yPosition--;
+		if((GPIO_PORTE_DATA_R & 0x01) == 1){	//Left Check
+			// Add in Combo and Perfect/Good/Miss 
+			if(Arrows[Left].yPosition >= 22 && Arrows[Left].yPosition <= 28){
+				//Combo++ and Display Perfect
+				
+				isTouch(4);
+			}
+			else if(Arrows[Left].yPosition >= 29 && Arrows[Left].yPosition <= 38){
+				//Combo++ and Display Good
+				isTouch(4);
+			}
+			else if(Arrows[Left].yPosition >= 39 && Arrows[Left].yPosition <= 50){
+				//Combo = 0 and Display Miss..
+				Combo = 0;
+				isTouch(4);
+			}
 		}
-		isTouch(LeftArrow);
-//		for(int c = 0; c < 500000; c++){}
+		if((GPIO_PORTE_DATA_R & 0x02) == 1){	//Down Check
+			// Add in Combo and Perfect/Good/Miss 
+			if(Arrows[Down].yPosition >= 22 && Arrows[Down].yPosition <= 28){
+				//Combo++ and Display Perfect
+				isTouch(36);
+			}
+			else if(Arrows[Down].yPosition >= 29 && Arrows[Down].yPosition <= 38){
+				//Combo++ and Display Good
+				isTouch(36);
+			}
+			else if(Arrows[Down].yPosition >= 39 && Arrows[Down].yPosition <= 50){
+				//Combo = 0 and Display Miss..
+				Combo = 0;
+				isTouch(36);
+			}
+		}
+		if((GPIO_PORTE_DATA_R & 0x04) == 1){	//Up Check
+		// Add in Combo and Perfect/Good/Miss 
+			if(Arrows[Up].yPosition >= 22 && Arrows[Up].yPosition <= 28){
+				//Combo++ and Display Perfect
+				isTouch(68);
+			}
+			else if(Arrows[Up].yPosition >= 29 && Arrows[Up].yPosition <= 38){
+				//Combo++ and Display Good
+				isTouch(68);
+			}
+			else if(Arrows[Up].yPosition >= 39 && Arrows[Up].yPosition <= 50){
+				//Combo = 0 and Display Miss..
+				Combo = 0;
+				isTouch(68);
+			}
+		}
+		if((GPIO_PORTE_DATA_R & 0x8) == 1){	//Right Check
+		// Add in Combo and Perfect/Good/Miss 
+			if(Arrows[Right].yPosition >= 22 && Arrows[Right].yPosition <= 28){
+				//Combo++ and Display Perfect
+				isTouch(100);
+			}
+			else if(Arrows[Right].yPosition >= 29 && Arrows[Right].yPosition <= 38){
+				//Combo++ and Display Good
+				isTouch(100);
+			}
+			else if(Arrows[Right].yPosition >= 39 && Arrows[Right].yPosition <= 50){
+				//Combo = 0 and Display Miss..
+				Combo = 0;
+				isTouch(100);
+			}
+		}
+		ST7735_DrawBitmap(4, 48, Static_Left, 24, 24);
+		if(checkarr[Left]==1){
+			ST7735_FillRect(Arrows[Left].xPosition, (Arrows[Left].yPosition + 1), 0x0000, 24, 24);
+			ST7735_DrawPicture(Arrows[Left].xPosition, Arrows[Left].yPosition, Arrow_Left, 24, 24);
+			Arrows[Left].yPosition--;
+		}
+		isTouch(Left); // Check Left
+		
+		ST7735_DrawBitmap(36, 48, Static_Down, 24, 24);
+		if(checkarr[Down]==1){
+			ST7735_FillRect(Arrows[Down].xPosition, (Arrows[Down].yPosition + 1), 0x0000, 24, 24);
+			ST7735_DrawPicture(Arrows[Down].xPosition, Arrows[Down].yPosition, Arrow_Down, 24, 24);
+			Arrows[Down].yPosition--;
+		}
+		isTouch(Down);	// Check Down
+
+		ST7735_DrawBitmap(68, 48, Static_Up, 24, 24);		
+		if(checkarr[Up]==1){
+			ST7735_FillRect(Arrows[Up].xPosition, (Arrows[Up].yPosition + 1), 0x0000, 24, 24);
+			ST7735_DrawPicture(Arrows[Up].xPosition, Arrows[Up].yPosition, Arrow_Up, 24, 24);
+			Arrows[Up].yPosition--;
+		}
+		isTouch(Up);	//Check Up
+		
+		ST7735_DrawBitmap(100, 48, Static_Right, 24, 24);		
+		if(checkarr[Right]==1){
+			ST7735_FillRect(Arrows[Right].xPosition, (Arrows[Right].yPosition + 1), 0x0000, 24, 24);
+			ST7735_DrawPicture(Arrows[Right].xPosition, Arrows[Right].yPosition, Arrow_Right, 24, 24);
+			Arrows[Right].yPosition--;
+		}
+		isTouch(Right);	//Check Right
+		
+		// DISPLAY COMBO HERE
+		
+		for(int c = 0; c < 200000; c++){}
 		count++;
   }
 	

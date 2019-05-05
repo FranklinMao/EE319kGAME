@@ -112,14 +112,15 @@ Section Cross References
     etterna.o(i.main) refers to st7735.o(i.ST7735_FillScreen) for ST7735_FillScreen
     etterna.o(i.main) refers to timer0.o(i.Timer0_Init) for Timer0_Init
     etterna.o(i.main) refers to timer1.o(i.Timer1_Init) for Timer1_Init
+    etterna.o(i.main) refers to arrow.o(i.isTouch) for isTouch
     etterna.o(i.main) refers to st7735.o(i.ST7735_DrawBitmap) for ST7735_DrawBitmap
     etterna.o(i.main) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
     etterna.o(i.main) refers to st7735.o(i.ST7735_DrawPicture) for ST7735_DrawPicture
-    etterna.o(i.main) refers to arrow.o(i.isTouch) for isTouch
+    etterna.o(i.main) refers to arrow.o(.data) for Arrows
     etterna.o(i.main) refers to etterna.o(.constdata) for Static_Left
     etterna.o(i.main) refers to arrow.o(.bss) for checkarr
-    etterna.o(i.main) refers to arrow.o(.data) for LeftArrow
     arrow.o(i.isTouch) refers to st7735.o(i.ST7735_FillRect) for ST7735_FillRect
+    arrow.o(i.isTouch) refers to arrow.o(.data) for Arrows
     arrow.o(i.isTouch) refers to arrow.o(.bss) for checkarr
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
@@ -256,31 +257,31 @@ Image Symbol Table
     i.ST7735_InitR                           0x00000758   Section        0  st7735.o(i.ST7735_InitR)
     i.ST7735_SetCursor                       0x000007d4   Section        0  st7735.o(i.ST7735_SetCursor)
     i.Timer0A_Handler                        0x000007f4   Section        0  timer0.o(i.Timer0A_Handler)
-    i.Timer0_Init                            0x00000834   Section        0  timer0.o(i.Timer0_Init)
-    i.Timer1A_Handler                        0x00000888   Section        0  timer1.o(i.Timer1A_Handler)
-    i.Timer1_Init                            0x000008cc   Section        0  timer1.o(i.Timer1_Init)
-    i.__scatterload_copy                     0x00000924   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00000932   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00000934   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.commandList                            0x00000942   Section        0  st7735.o(i.commandList)
-    commandList                              0x00000943   Thumb Code    86  st7735.o(i.commandList)
-    i.commonInit                             0x00000998   Section        0  st7735.o(i.commonInit)
-    commonInit                               0x00000999   Thumb Code   342  st7735.o(i.commonInit)
-    i.isTouch                                0x00000b20   Section        0  arrow.o(i.isTouch)
-    i.main                                   0x00000b4c   Section        0  etterna.o(i.main)
-    i.pushColor                              0x00000be8   Section        0  st7735.o(i.pushColor)
-    pushColor                                0x00000be9   Thumb Code    18  st7735.o(i.pushColor)
-    i.setAddrWindow                          0x00000bfc   Section        0  st7735.o(i.setAddrWindow)
-    setAddrWindow                            0x00000bfd   Thumb Code   106  st7735.o(i.setAddrWindow)
-    .constdata                               0x00000c70   Section    69248  sound.o(.constdata)
-    .constdata                               0x00011af0   Section     2018  st7735.o(.constdata)
-    Font                                     0x00011af0   Data        1275  st7735.o(.constdata)
-    Bcmd                                     0x00011feb   Data         103  st7735.o(.constdata)
-    Rcmd1                                    0x00012052   Data          59  st7735.o(.constdata)
-    Rcmd2green                               0x0001208d   Data          13  st7735.o(.constdata)
-    Rcmd2red                                 0x0001209a   Data          13  st7735.o(.constdata)
-    Rcmd3                                    0x000120a7   Data          43  st7735.o(.constdata)
-    .constdata                               0x000122d2   Section     9216  etterna.o(.constdata)
+    i.Timer0_Init                            0x000008b0   Section        0  timer0.o(i.Timer0_Init)
+    i.Timer1A_Handler                        0x00000904   Section        0  timer1.o(i.Timer1A_Handler)
+    i.Timer1_Init                            0x00000948   Section        0  timer1.o(i.Timer1_Init)
+    i.__scatterload_copy                     0x000009a0   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x000009ae   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x000009b0   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.commandList                            0x000009be   Section        0  st7735.o(i.commandList)
+    commandList                              0x000009bf   Thumb Code    86  st7735.o(i.commandList)
+    i.commonInit                             0x00000a14   Section        0  st7735.o(i.commonInit)
+    commonInit                               0x00000a15   Thumb Code   342  st7735.o(i.commonInit)
+    i.isTouch                                0x00000b9c   Section        0  arrow.o(i.isTouch)
+    i.main                                   0x00000c30   Section        0  etterna.o(i.main)
+    i.pushColor                              0x00000f64   Section        0  st7735.o(i.pushColor)
+    pushColor                                0x00000f65   Thumb Code    18  st7735.o(i.pushColor)
+    i.setAddrWindow                          0x00000f78   Section        0  st7735.o(i.setAddrWindow)
+    setAddrWindow                            0x00000f79   Thumb Code   106  st7735.o(i.setAddrWindow)
+    .constdata                               0x00000fec   Section    69248  sound.o(.constdata)
+    .constdata                               0x00011e6c   Section     2018  st7735.o(.constdata)
+    Font                                     0x00011e6c   Data        1275  st7735.o(.constdata)
+    Bcmd                                     0x00012367   Data         103  st7735.o(.constdata)
+    Rcmd1                                    0x000123ce   Data          59  st7735.o(.constdata)
+    Rcmd2green                               0x00012409   Data          13  st7735.o(.constdata)
+    Rcmd2red                                 0x00012416   Data          13  st7735.o(.constdata)
+    Rcmd3                                    0x00012423   Data          43  st7735.o(.constdata)
+    .constdata                               0x0001264e   Section     9216  etterna.o(.constdata)
     .data                                    0x20000000   Section        4  timer1.o(.data)
     .data                                    0x20000004   Section       44  st7735.o(.data)
     ColStart                                 0x2000000e   Data           1  st7735.o(.data)
@@ -289,10 +290,10 @@ Image Symbol Table
     TabColor                                 0x20000011   Data           1  st7735.o(.data)
     _width                                   0x20000012   Data           2  st7735.o(.data)
     _height                                  0x20000014   Data           2  st7735.o(.data)
-    .data                                    0x20000030   Section       72  arrow.o(.data)
-    .bss                                     0x20000078   Section       16  arrow.o(.bss)
-    STACK                                    0x20000088   Section     1024  startup.o(STACK)
-    StackMem                                 0x20000088   Data           0  startup.o(STACK)
+    .data                                    0x20000030   Section      136  arrow.o(.data)
+    .bss                                     0x200000b8   Section       16  arrow.o(.bss)
+    STACK                                    0x200000c8   Section     1024  startup.o(STACK)
+    StackMem                                 0x200000c8   Data           0  startup.o(STACK)
 
     Global Symbols
 
@@ -454,27 +455,27 @@ Image Symbol Table
     ST7735_FillScreen                        0x00000735   Thumb Code    28  st7735.o(i.ST7735_FillScreen)
     ST7735_InitR                             0x00000759   Thumb Code    90  st7735.o(i.ST7735_InitR)
     ST7735_SetCursor                         0x000007d5   Thumb Code    22  st7735.o(i.ST7735_SetCursor)
-    Timer0A_Handler                          0x000007f5   Thumb Code    42  timer0.o(i.Timer0A_Handler)
-    Timer0_Init                              0x00000835   Thumb Code    66  timer0.o(i.Timer0_Init)
-    Timer1A_Handler                          0x00000889   Thumb Code    50  timer1.o(i.Timer1A_Handler)
-    Timer1_Init                              0x000008cd   Thumb Code    70  timer1.o(i.Timer1_Init)
-    __scatterload_copy                       0x00000925   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00000933   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00000935   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    isTouch                                  0x00000b21   Thumb Code    40  arrow.o(i.isTouch)
-    main                                     0x00000b4d   Thumb Code   134  etterna.o(i.main)
-    BK                                       0x00000c70   Data       69248  sound.o(.constdata)
-    dBfs                                     0x000120d2   Data         512  st7735.o(.constdata)
-    Static_Left                              0x000122d2   Data        1152  etterna.o(.constdata)
-    Static_Down                              0x00012752   Data        1152  etterna.o(.constdata)
-    Static_Up                                0x00012bd2   Data        1152  etterna.o(.constdata)
-    Static_Right                             0x00013052   Data        1152  etterna.o(.constdata)
-    Arrow_Left                               0x000134d2   Data        1152  etterna.o(.constdata)
-    Arrow_Down                               0x00013952   Data        1152  etterna.o(.constdata)
-    Arrow_Up                                 0x00013dd2   Data        1152  etterna.o(.constdata)
-    Arrow_Right                              0x00014252   Data        1152  etterna.o(.constdata)
-    Region$$Table$$Base                      0x000146d4   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x000146f4   Number         0  anon$$obj.o(Region$$Table)
+    Timer0A_Handler                          0x000007f5   Thumb Code   144  timer0.o(i.Timer0A_Handler)
+    Timer0_Init                              0x000008b1   Thumb Code    66  timer0.o(i.Timer0_Init)
+    Timer1A_Handler                          0x00000905   Thumb Code    50  timer1.o(i.Timer1A_Handler)
+    Timer1_Init                              0x00000949   Thumb Code    70  timer1.o(i.Timer1_Init)
+    __scatterload_copy                       0x000009a1   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x000009af   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x000009b1   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    isTouch                                  0x00000b9d   Thumb Code   134  arrow.o(i.isTouch)
+    main                                     0x00000c31   Thumb Code   764  etterna.o(i.main)
+    BK                                       0x00000fec   Data       69248  sound.o(.constdata)
+    dBfs                                     0x0001244e   Data         512  st7735.o(.constdata)
+    Static_Left                              0x0001264e   Data        1152  etterna.o(.constdata)
+    Static_Down                              0x00012ace   Data        1152  etterna.o(.constdata)
+    Static_Up                                0x00012f4e   Data        1152  etterna.o(.constdata)
+    Static_Right                             0x000133ce   Data        1152  etterna.o(.constdata)
+    Arrow_Left                               0x0001384e   Data        1152  etterna.o(.constdata)
+    Arrow_Down                               0x00013cce   Data        1152  etterna.o(.constdata)
+    Arrow_Up                                 0x0001414e   Data        1152  etterna.o(.constdata)
+    Arrow_Right                              0x000145ce   Data        1152  etterna.o(.constdata)
+    Region$$Table$$Base                      0x00014a50   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00014a70   Number         0  anon$$obj.o(Region$$Table)
     si                                       0x20000000   Data           4  timer1.o(.data)
     StX                                      0x20000004   Data           4  st7735.o(.data)
     StY                                      0x20000008   Data           4  st7735.o(.data)
@@ -485,18 +486,19 @@ Image Symbol Table
     X                                        0x20000024   Data           4  st7735.o(.data)
     Yrange                                   0x20000028   Data           4  st7735.o(.data)
     lastj                                    0x2000002c   Data           4  st7735.o(.data)
-    LeftArrow                                0x20000030   Data           8  arrow.o(.data)
-    DownArrow                                0x20000038   Data           8  arrow.o(.data)
-    UpArrow                                  0x20000040   Data           8  arrow.o(.data)
-    RightArrow                               0x20000048   Data           8  arrow.o(.data)
+    Arrows                                   0x20000030   Data          32  arrow.o(.data)
     LeftIndex                                0x20000050   Data           4  arrow.o(.data)
     DownIndex                                0x20000054   Data           4  arrow.o(.data)
     UpIndex                                  0x20000058   Data           4  arrow.o(.data)
     RightIndex                               0x2000005c   Data           4  arrow.o(.data)
     count                                    0x20000060   Data           4  arrow.o(.data)
     Leftarray                                0x20000064   Data          20  arrow.o(.data)
-    checkarr                                 0x20000078   Data          16  arrow.o(.bss)
-    __initial_sp                             0x20000488   Data           0  startup.o(STACK)
+    Downarray                                0x20000078   Data          20  arrow.o(.data)
+    Uparray                                  0x2000008c   Data          20  arrow.o(.data)
+    Rightarray                               0x200000a0   Data          20  arrow.o(.data)
+    Combo                                    0x200000b4   Data           4  arrow.o(.data)
+    checkarr                                 0x200000b8   Data          16  arrow.o(.bss)
+    __initial_sp                             0x200004c8   Data           0  startup.o(STACK)
 
 
 
@@ -506,28 +508,28 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x0001476c, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00014b28, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x000146f4, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00014a70, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000284   Code   RO            3  * RESET               startup.o
-    0x00000284   0x00000284   0x00000000   Code   RO          515  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x00000284   0x00000284   0x00000004   Code   RO          518    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x00000288   0x00000288   0x00000004   Code   RO          521    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x0000028c   0x0000028c   0x00000000   Code   RO          523    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x0000028c   0x0000028c   0x00000000   Code   RO          525    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x0000028c   0x0000028c   0x00000008   Code   RO          526    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x00000294   0x00000294   0x00000000   Code   RO          528    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x00000294   0x00000294   0x00000000   Code   RO          530    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x00000294   0x00000294   0x00000004   Code   RO          519    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x00000284   0x00000284   0x00000000   Code   RO          516  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x00000284   0x00000284   0x00000004   Code   RO          519    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x00000288   0x00000288   0x00000004   Code   RO          522    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x0000028c   0x0000028c   0x00000000   Code   RO          524    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x0000028c   0x0000028c   0x00000000   Code   RO          526    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x0000028c   0x0000028c   0x00000008   Code   RO          527    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x00000294   0x00000294   0x00000000   Code   RO          529    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x00000294   0x00000294   0x00000000   Code   RO          531    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x00000294   0x00000294   0x00000004   Code   RO          520    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x00000298   0x00000298   0x00000064   Code   RO          134    .text               lcd.o
-    0x000002fc   0x000002fc   0x00000024   Code   RO          532    .text               mc_w.l(init.o)
+    0x000002fc   0x000002fc   0x00000024   Code   RO          533    .text               mc_w.l(init.o)
     0x00000320   0x00000320   0x00000040   Code   RO           16    i.DAC_Init          dac.o
     0x00000360   0x00000360   0x0000000c   Code   RO           17    i.DAC_Out           dac.o
     0x0000036c   0x0000036c   0x00000020   Code   RO          140    i.Delay1ms          st7735.o
-    0x0000038c   0x0000038c   0x000000ac   Code   RO          473    i.IO_Init           io.o
+    0x0000038c   0x0000038c   0x000000ac   Code   RO          474    i.IO_Init           io.o
     0x00000438   0x00000438   0x00000018   Code   RO          428    i.Init              etterna.o
     0x00000450   0x00000450   0x0000007c   Code   RO          412    i.PLL_Init          pll.o
     0x000004cc   0x000004cc   0x00000120   Code   RO          147    i.ST7735_DrawBitmap  st7735.o
@@ -537,42 +539,42 @@ Memory Map of the image
     0x00000734   0x00000734   0x00000024   Code   RO          156    i.ST7735_FillScreen  st7735.o
     0x00000758   0x00000758   0x0000007c   Code   RO          158    i.ST7735_InitR      st7735.o
     0x000007d4   0x000007d4   0x00000020   Code   RO          171    i.ST7735_SetCursor  st7735.o
-    0x000007f4   0x000007f4   0x00000040   Code   RO           59    i.Timer0A_Handler   timer0.o
-    0x00000834   0x00000834   0x00000054   Code   RO           60    i.Timer0_Init       timer0.o
-    0x00000888   0x00000888   0x00000044   Code   RO           86    i.Timer1A_Handler   timer1.o
-    0x000008cc   0x000008cc   0x00000058   Code   RO           87    i.Timer1_Init       timer1.o
-    0x00000924   0x00000924   0x0000000e   Code   RO          536    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x00000932   0x00000932   0x00000002   Code   RO          537    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00000934   0x00000934   0x0000000e   Code   RO          538    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x00000942   0x00000942   0x00000056   Code   RO          175    i.commandList       st7735.o
-    0x00000998   0x00000998   0x00000188   Code   RO          176    i.commonInit        st7735.o
-    0x00000b20   0x00000b20   0x0000002c   Code   RO          496    i.isTouch           arrow.o
-    0x00000b4c   0x00000b4c   0x0000009c   Code   RO          429    i.main              etterna.o
-    0x00000be8   0x00000be8   0x00000012   Code   RO          181    i.pushColor         st7735.o
-    0x00000bfa   0x00000bfa   0x00000002   PAD
-    0x00000bfc   0x00000bfc   0x00000074   Code   RO          182    i.setAddrWindow     st7735.o
-    0x00000c70   0x00000c70   0x00010e80   Data   RO          109    .constdata          sound.o
-    0x00011af0   0x00011af0   0x000007e2   Data   RO          184    .constdata          st7735.o
-    0x000122d2   0x000122d2   0x00002400   Data   RO          430    .constdata          etterna.o
-    0x000146d2   0x000146d2   0x00000002   PAD
-    0x000146d4   0x000146d4   0x00000020   Data   RO          534    Region$$Table       anon$$obj.o
+    0x000007f4   0x000007f4   0x000000bc   Code   RO           59    i.Timer0A_Handler   timer0.o
+    0x000008b0   0x000008b0   0x00000054   Code   RO           60    i.Timer0_Init       timer0.o
+    0x00000904   0x00000904   0x00000044   Code   RO           86    i.Timer1A_Handler   timer1.o
+    0x00000948   0x00000948   0x00000058   Code   RO           87    i.Timer1_Init       timer1.o
+    0x000009a0   0x000009a0   0x0000000e   Code   RO          537    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x000009ae   0x000009ae   0x00000002   Code   RO          538    i.__scatterload_null  mc_w.l(handlers.o)
+    0x000009b0   0x000009b0   0x0000000e   Code   RO          539    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x000009be   0x000009be   0x00000056   Code   RO          175    i.commandList       st7735.o
+    0x00000a14   0x00000a14   0x00000188   Code   RO          176    i.commonInit        st7735.o
+    0x00000b9c   0x00000b9c   0x00000094   Code   RO          497    i.isTouch           arrow.o
+    0x00000c30   0x00000c30   0x00000334   Code   RO          429    i.main              etterna.o
+    0x00000f64   0x00000f64   0x00000012   Code   RO          181    i.pushColor         st7735.o
+    0x00000f76   0x00000f76   0x00000002   PAD
+    0x00000f78   0x00000f78   0x00000074   Code   RO          182    i.setAddrWindow     st7735.o
+    0x00000fec   0x00000fec   0x00010e80   Data   RO          109    .constdata          sound.o
+    0x00011e6c   0x00011e6c   0x000007e2   Data   RO          184    .constdata          st7735.o
+    0x0001264e   0x0001264e   0x00002400   Data   RO          430    .constdata          etterna.o
+    0x00014a4e   0x00014a4e   0x00000002   PAD
+    0x00014a50   0x00014a50   0x00000020   Data   RO          535    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x000146f4, Size: 0x00000078, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   0x000146f4   0x00000004   Data   RW           88    .data               timer1.o
-    0x20000004   0x000146f8   0x0000002c   Data   RW          185    .data               st7735.o
-    0x20000030   0x00014724   0x00000048   Data   RW          498    .data               arrow.o
-
-
-    Execution Region ER_ZI (Exec base: 0x20000078, Load base: 0x0001476c, Size: 0x00000410, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00014a70, Size: 0x000000b8, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000078        -       0x00000010   Zero   RW          497    .bss                arrow.o
-    0x20000088        -       0x00000400   Zero   RW            1    STACK               startup.o
+    0x20000000   0x00014a70   0x00000004   Data   RW           88    .data               timer1.o
+    0x20000004   0x00014a74   0x0000002c   Data   RW          185    .data               st7735.o
+    0x20000030   0x00014aa0   0x00000088   Data   RW          499    .data               arrow.o
+
+
+    Execution Region ER_ZI (Exec base: 0x200000b8, Load base: 0x00014b28, Size: 0x00000410, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x200000b8        -       0x00000010   Zero   RW          498    .bss                arrow.o
+    0x200000c8        -       0x00000400   Zero   RW            1    STACK               startup.o
 
 
 ==============================================================================
@@ -582,20 +584,20 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-        44          4          0         72         16       1659   arrow.o
+       148         14          0        136         16       1834   arrow.o
         76         18          0          0          0       5381   dac.o
-       180         22       9216          0          0       1806   etterna.o
+       844         56       9216          0          0       2202   etterna.o
        172         26          0          0          0        466   io.o
        100         14          0          0          0        240   lcd.o
        124          4          0          0          0        491   pll.o
          0          0      69248          0          0        565   sound.o
       1452        136       2018         44          0      11896   st7735.o
        644        620          0          0       1024        780   startup.o
-       148         40          0          0          0        944   timer0.o
+       272         62          0          0          0        992   timer0.o
        156         36          0          4          0       1153   timer1.o
 
     ----------------------------------------------------------------------
-      3098        920      80516        120       1040      25381   Object Totals
+      3990        986      80516        184       1040      26000   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          2          0          0          0   (incl. Padding)
 
@@ -634,15 +636,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      3184        936      80516        120       1040      23753   Grand Totals
-      3184        936      80516        120       1040      23753   ELF Image Totals
-      3184        936      80516        120          0          0   ROM Totals
+      4076       1002      80516        184       1040      24372   Grand Totals
+      4076       1002      80516        184       1040      24372   ELF Image Totals
+      4076       1002      80516        184          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                83700 (  81.74kB)
-    Total RW  Size (RW Data + ZI Data)              1160 (   1.13kB)
-    Total ROM Size (Code + RO Data + RW Data)      83820 (  81.86kB)
+    Total RO  Size (Code + RO Data)                84592 (  82.61kB)
+    Total RW  Size (RW Data + ZI Data)              1224 (   1.20kB)
+    Total ROM Size (Code + RO Data + RW Data)      84776 (  82.79kB)
 
 ==============================================================================
 

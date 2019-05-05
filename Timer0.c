@@ -26,7 +26,6 @@
 #include "Sound.h"
 #include "../inc/tm4c123gh6pm.h"
 #include "Arrow.h"	
-
 	
 // ***************** Timer0_Init ****************
 // Activate TIMER0 interrupts to run user task periodically
@@ -54,5 +53,17 @@ void Timer0A_Handler(void){
 	if(count==Leftarray[LeftIndex]){
 		checkarr[0]=1;												//if count reaches a predetermined value in leftarray, set left arrow to on
 		LeftIndex++;													// go to next sequence in leftarray
+	}
+	if(count==Downarray[DownIndex]){
+		checkarr[1]=1;												
+		DownIndex++;
+	}
+	if(count==Uparray[UpIndex]){
+		checkarr[2]=1;												
+		UpIndex++;
+	}
+	if(count==Rightarray[RightIndex]){
+		checkarr[3]=1;												
+		RightIndex++;
 	}
 }
