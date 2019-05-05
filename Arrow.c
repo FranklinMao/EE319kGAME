@@ -2,7 +2,7 @@
 // struct and arrow initiailizations are global
 #include <stdint.h>
 #include "Arrow.h"
-
+#include "ST7735.h"
 typedef struct Arrow arrow_t;
 arrow_t LeftArrow={ 4, 96};					//x position and y position need to be calibrated
 arrow_t DownArrow={ 36, 96};
@@ -15,9 +15,9 @@ uint32_t UpIndex=0;										//index to go through up arrow/note array
 uint32_t RightIndex=0;								//index to go through right arrow/note array
 uint32_t count=0;												//counter incremented in ISR, global clock
 int Leftarray[]={1,115,250,375,500};		//note array, check if count = array entry
-int isTouch(arrow_t Arrow){
-	if(Arrow.yPosition<=24){						//need to test for actual max y position
-		return 1;
-	}
-	return 0;															//1 means arrow has touched top arrow, reached the end, and therefore must disappear
+void isTouch(arrow_t Arrow){
+	if(Arrow.yPosition<=20){						//test for miss
+		ST7735_FillRect(Arrow.xPosition,20,0x0000,24,30);			//clear arrow
+		Arrow.yPosition=160;
+	}															
 }

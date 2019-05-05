@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Etterna.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Etterna.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat May 04 06:23:18 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Sat May 04 23:49:42 2019
 <BR><P>
 <H3>Maximum Stack Usage =         96 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -578,7 +578,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[7d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler
 </UL>
 
-<P><STRONG><a name="[94]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
+<P><STRONG><a name="[93]"></a>_main_stk</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry2.o(.ARM.Collect$$$$00000001))
 
 <P><STRONG><a name="[7f]"></a>_main_scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry5.o(.ARM.Collect$$$$00000004))
 <BR><BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
@@ -588,15 +588,15 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 </UL>
 
-<P><STRONG><a name="[95]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
+<P><STRONG><a name="[94]"></a>_main_clock</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry7b.o(.ARM.Collect$$$$00000008))
 
-<P><STRONG><a name="[96]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
+<P><STRONG><a name="[95]"></a>_main_cpp_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry8b.o(.ARM.Collect$$$$0000000A))
 
-<P><STRONG><a name="[97]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
+<P><STRONG><a name="[96]"></a>_main_init</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry9a.o(.ARM.Collect$$$$0000000B))
 
-<P><STRONG><a name="[98]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
+<P><STRONG><a name="[97]"></a>__rt_final_cpp</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry10a.o(.ARM.Collect$$$$0000000D))
 
-<P><STRONG><a name="[99]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
+<P><STRONG><a name="[98]"></a>__rt_final_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, entry11a.o(.ARM.Collect$$$$0000000F))
 
 <P><STRONG><a name="[81]"></a>writecommand</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, lcd.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;writecommand
@@ -624,7 +624,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_main_scatterload
 </UL>
 
-<P><STRONG><a name="[9a]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
+<P><STRONG><a name="[99]"></a>__scatterload_rt2</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, init.o(.text), UNUSED)
 
 <P><STRONG><a name="[86]"></a>DAC_Init</STRONG> (Thumb, 52 bytes, Stack size 0 bytes, dac.o(i.DAC_Init))
 <BR><BR>[Called By]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init
@@ -710,7 +710,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[89]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_InitR
 </UL>
 
-<P><STRONG><a name="[1d]"></a>Timer0A_Handler</STRONG> (Thumb, 42 bytes, Stack size 0 bytes, timer0.o(i.Timer0A_Handler))
+<P><STRONG><a name="[1d]"></a>Timer0A_Handler</STRONG> (Thumb, 62 bytes, Stack size 0 bytes, timer0.o(i.Timer0A_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
 <P><STRONG><a name="[88]"></a>Timer0_Init</STRONG> (Thumb, 66 bytes, Stack size 0 bytes, timer0.o(i.Timer0_Init))
@@ -720,24 +720,17 @@ Global Symbols
 <P><STRONG><a name="[1f]"></a>Timer1A_Handler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, timer1.o(i.Timer1A_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup.o(RESET)
 </UL>
-<P><STRONG><a name="[9b]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
+<P><STRONG><a name="[9a]"></a>__scatterload_copy</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_copy), UNUSED)
 
-<P><STRONG><a name="[9c]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
+<P><STRONG><a name="[9b]"></a>__scatterload_null</STRONG> (Thumb, 2 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_null), UNUSED)
 
-<P><STRONG><a name="[9d]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
+<P><STRONG><a name="[9c]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[93]"></a>isTouch</STRONG> (Thumb, 16 bytes, Stack size 12 bytes, arrow.o(i.isTouch))
-<BR><BR>[Stack]<UL><LI>Max Depth = 12<LI>Call Chain = isTouch
-</UL>
-<BR>[Called By]<UL><LI><a href="#[7c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
-</UL>
-
-<P><STRONG><a name="[7c]"></a>main</STRONG> (Thumb, 202 bytes, Stack size 8 bytes, etterna.o(i.main))
+<P><STRONG><a name="[7c]"></a>main</STRONG> (Thumb, 180 bytes, Stack size 8 bytes, etterna.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
 <LI>Call Chain = main &rArr; Init &rArr; ST7735_InitR &rArr; ST7735_FillScreen &rArr; ST7735_FillRect &rArr; setAddrWindow
 </UL>
-<BR>[Calls]<UL><LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isTouch
-<LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IO_Touch
+<BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IO_Touch
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Init
 <LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_FillScreen
 <LI><a href="#[8a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ST7735_DrawBitmap

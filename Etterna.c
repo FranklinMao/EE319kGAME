@@ -105,10 +105,8 @@ int main(void){
 	ST7735_DrawBitmap(100, 96, Arrow_Right, 24, 24); 
 
 	while(1){
-		if(isTouch(LeftArrow)==1){
-			LeftArrow.yPosition=0;
-			checkarr[0]=0;
-		}
+		
+		
 		if(checkarr[0]==1){
 			ST7735_DrawBitmap(LeftArrow.xPosition, LeftArrow.yPosition, Arrow_Left, 24, 24);
 		}

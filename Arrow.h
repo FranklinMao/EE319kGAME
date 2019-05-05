@@ -16,4 +16,4 @@ extern arrow_t UpArrow;
 extern arrow_t RightArrow;
 extern int checkarr[4];
 extern int Leftarray[];
-int isTouch(arrow_t Arrow);
+void isTouch(arrow_t Arrow);
