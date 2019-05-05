@@ -96,23 +96,38 @@ int main(void){
 	}*/	
 	
 	ST7735_FillScreen(0);
-	Timer0_Init(4000);				//timer0 is for updating arrows
-	Timer1_Init(40000); //(1/FREQ)/(12.5 x 10^-9)	
+	ST7735_FillRect(0, 0, 0x0000, 71, 12);
+	ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
+	for(int c = 0; c < 10000000; c++){}
+	ST7735_FillRect(0, 0, 0x0000, 71, 12);
+	ST7735_DrawBitmap(1, 12, Good, 70, 12);
+	for(int c = 0; c < 10000000; c++){}
+	ST7735_FillRect(0, 0, 0x0000, 71, 12);
+	ST7735_DrawBitmap(1, 12, Miss, 71, 12);
+	for(int c = 0; c < 10000000; c++){}
 	
+	Timer0_Init(4000);	 //(1/FREQ)/(12.5 x 10^-9)			
+	Timer1_Init(40000);	//timer1 is for updating arrows
+		
+	IO_Touch();
 	while(1){
 		if((GPIO_PORTE_DATA_R & 0x01) == 1){	//Left Check
 			// Add in Combo and Perfect/Good/Miss 
 			if(Arrows[Left].yPosition >= 22 && Arrows[Left].yPosition <= 28){
 				//Combo++ and Display Perfect
-				
+				ST7735_DrawPicture(1, 0, Perfect, 106, 18);
+				Combo++;
 				isTouch(4);
 			}
 			else if(Arrows[Left].yPosition >= 29 && Arrows[Left].yPosition <= 38){
 				//Combo++ and Display Good
+				ST7735_DrawPicture(1, 0, Good, 105, 18);
+				Combo++;
 				isTouch(4);
 			}
 			else if(Arrows[Left].yPosition >= 39 && Arrows[Left].yPosition <= 50){
 				//Combo = 0 and Display Miss..
+				ST7735_DrawPicture(1, 0, Miss, 106, 18);
 				Combo = 0;
 				isTouch(4);
 			}
@@ -121,14 +136,19 @@ int main(void){
 			// Add in Combo and Perfect/Good/Miss 
 			if(Arrows[Down].yPosition >= 22 && Arrows[Down].yPosition <= 28){
 				//Combo++ and Display Perfect
+				ST7735_DrawPicture(1, 0, Perfect, 106, 18);
+				Combo++;
 				isTouch(36);
 			}
 			else if(Arrows[Down].yPosition >= 29 && Arrows[Down].yPosition <= 38){
 				//Combo++ and Display Good
+				ST7735_DrawPicture(1, 0, Good, 105, 18);
+				Combo++;
 				isTouch(36);
 			}
 			else if(Arrows[Down].yPosition >= 39 && Arrows[Down].yPosition <= 50){
 				//Combo = 0 and Display Miss..
+				ST7735_DrawPicture(1, 0, Miss, 106, 18);
 				Combo = 0;
 				isTouch(36);
 			}
@@ -137,14 +157,19 @@ int main(void){
 		// Add in Combo and Perfect/Good/Miss 
 			if(Arrows[Up].yPosition >= 22 && Arrows[Up].yPosition <= 28){
 				//Combo++ and Display Perfect
+				ST7735_DrawPicture(1, 0, Perfect, 106, 18);
+				Combo++;
 				isTouch(68);
 			}
 			else if(Arrows[Up].yPosition >= 29 && Arrows[Up].yPosition <= 38){
 				//Combo++ and Display Good
+				ST7735_DrawPicture(1, 0, Good, 105, 18);
+				Combo++;
 				isTouch(68);
 			}
 			else if(Arrows[Up].yPosition >= 39 && Arrows[Up].yPosition <= 50){
 				//Combo = 0 and Display Miss..
+				ST7735_DrawPicture(1, 0, Miss, 106, 18);
 				Combo = 0;
 				isTouch(68);
 			}
@@ -153,14 +178,19 @@ int main(void){
 		// Add in Combo and Perfect/Good/Miss 
 			if(Arrows[Right].yPosition >= 22 && Arrows[Right].yPosition <= 28){
 				//Combo++ and Display Perfect
+				ST7735_DrawPicture(1, 0, Perfect, 106, 18);
+				Combo++;
 				isTouch(100);
 			}
 			else if(Arrows[Right].yPosition >= 29 && Arrows[Right].yPosition <= 38){
 				//Combo++ and Display Good
+				ST7735_DrawPicture(1, 0, Good, 105, 18);
+				Combo++;
 				isTouch(100);
 			}
 			else if(Arrows[Right].yPosition >= 39 && Arrows[Right].yPosition <= 50){
 				//Combo = 0 and Display Miss..
+				ST7735_DrawPicture(1, 0, Miss, 106, 18);
 				Combo = 0;
 				isTouch(100);
 			}
@@ -198,7 +228,11 @@ int main(void){
 		isTouch(Right);	//Check Right
 		
 		// DISPLAY COMBO HERE
-		
+		ST7735_FillRect(74, 1, 0x0000, 50, 12);
+		ST7735_SetCursor(14, 0);
+		ST7735_OutString("Combo:");
+		ST7735_SetCursor(14, 1);
+		LCD_OutDec(Combo);
 		for(int c = 0; c < 200000; c++){}
 		count++;
   }

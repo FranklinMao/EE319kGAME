@@ -23,7 +23,7 @@ void isTouch(int in){
 		Combo = 0;
 	}								
 	if(in == 4 || in == 36 || in == 68 || in == 100){
-	ST7735_FillRect(in, 18, 24, 160, 0x0000);
+	ST7735_FillRect(in, 19, 24, 160, 0x0000);
 	}
 	if(in==4){checkarr[0] = 0;}
 	if(in==36){checkarr[1] = 0;}
