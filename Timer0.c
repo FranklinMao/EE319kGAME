@@ -51,7 +51,11 @@ void Timer0_Init(uint32_t period){
 
 void Timer0A_Handler(void){
   TIMER0_ICR_R = TIMER_ICR_TATOCINT;// acknowledge TIMER0A timeout
-	checkarr[0]=Leftarray[ArrowIndex];
+	if(count==Leftarray[LeftIndex]){
+		checkarr[0]=1;												//if count reaches a predetermined value in leftarray, set left arrow to on
+		LeftIndex++;													// go to next sequence in leftarray
+	}
+
 	LeftArrow.yPosition--;
-	ArrowIndex++;
+	count++;
 }
