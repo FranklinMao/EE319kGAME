@@ -237,7 +237,8 @@ int main(void){
 		ST7735_OutString("Combo:");
 		ST7735_SetCursor(14, 1);
 		LCD_OutDec(Combo);
-		for(int c = 0; c < 200000 *(Convert(ADC_In())/1000); c++){}						//everthing between 1.0cm-2.0cm is base speed
+		for(int c = 0; c < 200000 *((Convert(ADC_In())/666)+3)/4; c++){}						//everthing between 1.0cm-2.0cm is base speed
+		TIMER1_TAILR_R=(40000 *((Convert(ADC_In())/666)+3)/4)-1;
 		count++;
   }
 	
