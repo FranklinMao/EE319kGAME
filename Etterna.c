@@ -75,7 +75,7 @@
 void Init(void){
 PLL_Init(Bus80MHz);    // set system clock to 80 MHz
 DAC_Init();
-//ADC_Init();	
+ADC_Init();	
 IO_Init();		
 ST7735_InitR(INITR_REDTAB);
 }
@@ -84,6 +84,10 @@ void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void Delay100ms(uint32_t count); // time delay in 0.1 seconds
 extern int Combo;
+
+uint32_t Convert(uint32_t input){
+  return (569*input)/1250 +225;
+}
 
 int main(void){
 	Init();
@@ -233,7 +237,7 @@ int main(void){
 		ST7735_OutString("Combo:");
 		ST7735_SetCursor(14, 1);
 		LCD_OutDec(Combo);
-		for(int c = 0; c < 200000; c++){}
+		for(int c = 0; c < 200000 *(Convert(ADC_In())/1000); c++){}						//everthing between 1.0cm-2.0cm is base speed
 		count++;
   }
 	
