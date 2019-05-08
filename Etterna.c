@@ -143,7 +143,7 @@ int main(void){
 			if((Arrows[Left].yPosition >= 44) && (Arrows[Left].yPosition <= 52)){
 				//Combo++ and Display Perfect
 				ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
-				Score+=12500;
+				Score+=25000;
 				PerfectC++;
 				Combo++;
 				missflag = 0;
@@ -153,7 +153,7 @@ int main(void){
 				//Combo++ and Display Good
 				ST7735_FillRect(71, 0, 1, 12, 0x0000);
 				ST7735_DrawBitmap(1, 12, Good, 70, 12);
-				Score+=6250;
+				Score+=12500;
 				GoodC++;
 				Combo++;
 				missflag = 0;
@@ -172,7 +172,7 @@ int main(void){
 			if((Arrows[Down].yPosition >= 44) && (Arrows[Down].yPosition <= 52)){
 				//Combo++ and Display Perfect
 				ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
-				Score+=12500;
+				Score+=25000;
 				PerfectC++;
 				Combo++;
 				missflag = 0;
@@ -182,7 +182,7 @@ int main(void){
 				//Combo++ and Display Good
 				ST7735_FillRect(71, 0, 1, 12, 0x0000);
 				ST7735_DrawBitmap(1, 12, Good, 70, 12);
-				Score+=6250;
+				Score+=12500;
 				GoodC++;
 				Combo++;
 				missflag = 0;
@@ -201,7 +201,7 @@ int main(void){
 			if((Arrows[Up].yPosition >= 44) && (Arrows[Up].yPosition <= 52)){
 				//Combo++ and Display Perfect
 				ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
-				Score+=12500;
+				Score+=25000;
 				PerfectC++;
 				Combo++;
 				missflag = 0;
@@ -211,7 +211,7 @@ int main(void){
 				//Combo++ and Display Good
 				ST7735_FillRect(71, 0, 1, 12, 0x0000);
 				ST7735_DrawBitmap(1, 12, Good, 70, 12);
-				Score+=6250;
+				Score+=12500;
 				GoodC++;
 				Combo++;
 				missflag = 0;
@@ -230,7 +230,7 @@ int main(void){
 			if((Arrows[Right].yPosition >= 44) && (Arrows[Right].yPosition <= 52)){
 				//Combo++ and Display Perfect
 				ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
-				Score+=12500;
+				Score+=25000;
 				PerfectC++;
 				Combo++;
 				missflag = 0;
@@ -240,7 +240,7 @@ int main(void){
 				//Combo++ and Display Good
 				ST7735_FillRect(71, 0, 1, 12, 0x0000);
 				ST7735_DrawBitmap(1, 12, Good, 70, 12);
-				Score+=6250;
+				Score+=12500;
 				GoodC++;
 				Combo++;
 				missflag = 0;
@@ -286,18 +286,30 @@ int main(void){
 		if(isTouch(Right) == 1){ST7735_DrawBitmap(1, 12, Miss, 71, 12);}	//Check Right
 		
 		// DISPLAY COMBO HERE
-		ST7735_FillRect(74, 1, 0x0000, 50, 12);
+		ST7735_FillRect(74, 1, 0x0000, 50, 24);
 		ST7735_SetCursor(14, 0);
 		ST7735_OutString("Combo:");
+		if(Combo >= 10){
 		ST7735_SetCursor(14, 1);
-		LCD_OutDec(Combo);
+		LCD_OutDec((uint16_t)Combo);
+		}
+		else if(Combo < 10){
+		ST7735_SetCursor(14, 1);
+		LCD_OutDec((uint16_t)0);
+		ST7735_SetCursor(15, 1);
+		LCD_OutDec((uint16_t)Combo);
+		}
 		
-		Convert(ADC_In());
-		for(int c = 0; c < 100; c++){}									
+		Convert(ADC_In());								
 		TIMER1_TAILR_R = period;
 		count++;
   }
-	
+	for(int c = 0; c < 1000000; c++){}
+	ST7735_FillScreen(0x0000);
+	ST7735_SetCursor(1, 8);
+	ST7735_OutString("Click to");
+	ST7735_SetCursor(1, 9);
+	ST7735_OutString("see results!");
 	IO_Touch();
 	ST7735_FillScreen(0x0000);            // set screen to black
 	for(int c = 0; c < 1000000; c++){}								// Display Grade of Notes hit
@@ -333,8 +345,10 @@ int main(void){
 	ST7735_SetCursor(1, 9);
 	ST7735_OutString("Final Score:");
 	for(int c = 0; c < 500000; c++){}
-	ST7735_SetCursor(13, 9);
+	ST7735_SetCursor(1, 10);
 	LCD_OutDec(Score);																// Display Final Score
+	ST7735_SetCursor(8, 10);
+	ST7735_OutString("/1000000");
 	for(int c = 0; c < 1000000; c++){}	
 	
 	ST7735_SetTextColor(0x7A0C);
@@ -343,23 +357,28 @@ int main(void){
 	ST7735_OutString("Perfect!");
 	for(int c = 0; c < 500000; c++){}	
 	}		
-	else if((Score < 1000000) && (Score >= 850000)){
+	else if((Score >= 850000)){
 	ST7735_SetCursor(1, 11);
 	ST7735_OutString("Amazing!");
 	for(int c = 0; c < 500000; c++){}	
 	}
-	else if((Score < 8500000) && (Score >= 700000)){
+	else if((Score < 850000) && (Score >= 500000)){
 	ST7735_SetCursor(1, 11);
 	ST7735_OutString("Good Job :)");
 	for(int c = 0; c < 500000; c++){}	
 	}
-	else if((Score < 7000000)){
+	else if((Score < 500000)){
 	ST7735_SetCursor(1, 11);
 	ST7735_OutString("Better Luck");
 	ST7735_SetCursor(1, 12);
 	ST7735_OutString("Next Time");
 	for(int c = 0; c < 500000; c++){}	
 	}
-
+	
+	ST7735_SetCursor(1, 14);
+	ST7735_OutString("Click to go");
+	ST7735_SetCursor(1, 15);
+	ST7735_OutString("to menu!");
+	IO_Reset();
 
 }

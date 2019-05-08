@@ -32,4 +32,6 @@ void IO_Touch(void);
 
 void IO_Choice(void);
 
+void IO_Reset(void);
+
 #endif

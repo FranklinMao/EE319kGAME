@@ -31,7 +31,7 @@ void IO_Init(void) {
 	while((SYSCTL_RCGCGPIO_R&0X010)==0){
 	}
 	GPIO_PORTE_DIR_R |=0X00;
-	GPIO_PORTE_DEN_R |=0X0F;
+	GPIO_PORTE_DEN_R |=0X1F;
 	
 	
 }
@@ -51,17 +51,23 @@ void IO_HeartBeat(void) {
 // Input: none
 // Output: none
 void IO_Touch(void) {
-	while(((GPIO_PORTF_DATA_R&0X10)>>4)==1){
+/*	while(((GPIO_PORTF_DATA_R&0X10)>>4)==1){
 	}
 	for(int i=0;i<1600000;i++){
 	}																	//delay for 20ms
 	while(((GPIO_PORTF_DATA_R&0x10)>>4)==0){
+	}*/
+	while(((GPIO_PORTE_DATA_R&0X10)>>4)==1){
+	}
+	for(int i=0;i<1600000;i++){
+	}																	//delay for 20ms
+	while(((GPIO_PORTE_DATA_R&0x10)>>4)==0){
 	}
  // --UUU-- wait for release; delay for 20ms; and then wait for press
 }  
 
 void IO_Choice(void){
-while(((GPIO_PORTF_DATA_R&0X10)>>4)==1){	
+while(((GPIO_PORTE_DATA_R&0X10)>>4)==0){	
 	if(GPIO_PORTE_DATA_R == 1){
 		SC = 80;
 	}
@@ -71,7 +77,17 @@ while(((GPIO_PORTF_DATA_R&0X10)>>4)==1){
 }
 	for(int i=0;i<1600000;i++){
 	}																	//delay for 20ms
-	while(((GPIO_PORTF_DATA_R&0x10)>>4)==0){
+	while(((GPIO_PORTE_DATA_R&0x10)>>4)==1){
 	}
 }
 
+void IO_Reset(void){
+while(((GPIO_PORTE_DATA_R&0X10)>>4)==0){	
+	
+	for(int i=0;i<1600000;i++){
+	}																	//delay for 20ms
+	while(((GPIO_PORTE_DATA_R&0x10)>>4)==1){
+		NVIC_APINT_R = NVIC_APINT_VECTKEY | NVIC_APINT_SYSRESETREQ;
+	}
+}
+}

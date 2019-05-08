@@ -13,21 +13,21 @@ uint32_t count=0;											//counter incremented in ISR, global clock
 int songc = 0;												// Defines which song notes will be used - BK or Torna
 int MissC = 0;
 int missflag = 0;											// Avoids extra misses
-int Leftarray[2][20]={									//note array, check if count = array entry
-{1,120,250,375,550},
-{1,120,250,375,550}
+int Leftarray[2][10]={									//note array, check if count = array entry
+{1,120,240,400,520,635,900,1090,1260,1380},
+{30,160,255,420,720,840,970,1100,1220,1450}
 };		
-int Downarray[2][20]={
-{5,125,255,380,555},
-{5,125,255,380,555}
+int Downarray[2][10]={
+{30,160,255,420,720,840,970,1100,1220,1340},
+{50,200,260,450,560,780,860,1090,1250,1370}
 };
-int Uparray[2][20]={
-{10,130,260,385,560},
-{10,130,260,385,560}
+int Uparray[2][10]={
+{50,200,260,450,560,780,860,1090,1250,1370},
+{1,120,240,400,520,635,900,1090,1260,1380}
 };
-int Rightarray[2][20]={
-{15,135,265,390,565},
-{15,135,265,390,565}
+int Rightarray[2][10]={
+{30,150,265,460,585,650,765,940,1300,1380},
+{30,150,265,460,585,650,765,940,1300,1550}
 };
 int Combo = 0;
 int isTouch(int in){
