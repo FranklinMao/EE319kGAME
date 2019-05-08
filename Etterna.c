@@ -75,20 +75,41 @@
 void Init(void){
 PLL_Init(Bus80MHz);    // set system clock to 80 MHz
 DAC_Init();
-ADC_Init();	
+	
 IO_Init();		
 ST7735_InitR(INITR_REDTAB);
+ADC_Init();
 }
 
 void DisableInterrupts(void); // Disable interrupts
 void EnableInterrupts(void);  // Enable interrupts
 void Delay100ms(uint32_t count); // time delay in 0.1 seconds
 extern int Combo;
+int Score = 0;
+int MaxCombo = 0;
+int PerfectC = 0;
+int GoodC = 0;
+int bpm = 0;
+int period = 0;
+int basebpm = 0;
+int baseperiod = 0;
 
-uint32_t Convert(uint32_t input){
-  return (569*input)/1250 +225;
+void Convert(uint32_t input){
+	bpm = basebpm;
+	period = baseperiod;
+	if((input >= 1000) && (input <= 3000)){
+		bpm = bpm;
+		period = period;
+	}
+	else if((input < 1000)){
+		bpm = (bpm * 5 / 4);
+		period = (period * 5 / 4);
+	}
+	else if((input > 3000)){
+		bpm = (bpm * 4 / 5);
+		period = (period * 4 / 5);
+	}
 }
-
 int main(void){
 	Init();
 /*	
@@ -99,137 +120,170 @@ int main(void){
 		}
 	}*/	
 	
+	ST7735_DrawBitmap(24, 81, Etterna, 80, 80);
+	ST7735_SetCursor(1, 9);
+	ST7735_OutString("Welcome to Etterna!");
+	ST7735_SetCursor(1, 10);
+	ST7735_OutString("Select Your Song");
+	ST7735_SetCursor(1, 11);
+	ST7735_OutString("1 - Butterfly Kiss");
+	ST7735_SetCursor(1, 12);
+	ST7735_OutString("2 - Torna Battle");
+	IO_Choice();
+	if(SC == 80){ songc = 0; end = 79782; bpm = 2000; basebpm = 2000; period = 40000; baseperiod = 40000;}				// Need to adjust bpm
+	else if(SC == 84){ songc = 1; end = 127691; bpm = 2000; basebpm = 2000; period = 26667; baseperiod = 26667;}		// Need to adjust bpm
 	ST7735_FillScreen(0);
-	ST7735_FillRect(0, 0, 0x0000, 71, 12);
-	ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
-	for(int c = 0; c < 10000000; c++){}
-	ST7735_FillRect(0, 0, 0x0000, 71, 12);
-	ST7735_DrawBitmap(1, 12, Good, 70, 12);
-	for(int c = 0; c < 10000000; c++){}
-	ST7735_FillRect(0, 0, 0x0000, 71, 12);
-	ST7735_DrawBitmap(1, 12, Miss, 71, 12);
-	for(int c = 0; c < 10000000; c++){}
 	
 	Timer0_Init(4000);	 //(1/FREQ)/(12.5 x 10^-9)			
-	Timer1_Init(40000);	//timer1 is for updating arrows
+	Timer1_Init(period);	//timer1 is for playing Song
 		
-	IO_Touch();
-	while(1){
+	while(si != 1000000){
 		if((GPIO_PORTE_DATA_R & 0x01) == 1){	//Left Check
 			// Add in Combo and Perfect/Good/Miss 
-			if(Arrows[Left].yPosition >= 22 && Arrows[Left].yPosition <= 28){
+			if((Arrows[Left].yPosition >= 44) && (Arrows[Left].yPosition <= 52)){
 				//Combo++ and Display Perfect
-				ST7735_DrawPicture(1, 0, Perfect, 106, 18);
+				ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
+				Score+=12500;
+				PerfectC++;
 				Combo++;
+				missflag = 0;
 				isTouch(4);
 			}
-			else if(Arrows[Left].yPosition >= 29 && Arrows[Left].yPosition <= 38){
+			else if((Arrows[Left].yPosition >= 53) && (Arrows[Left].yPosition <= 62)){
 				//Combo++ and Display Good
-				ST7735_DrawPicture(1, 0, Good, 105, 18);
+				ST7735_FillRect(71, 0, 1, 12, 0x0000);
+				ST7735_DrawBitmap(1, 12, Good, 70, 12);
+				Score+=6250;
+				GoodC++;
 				Combo++;
+				missflag = 0;
 				isTouch(4);
 			}
-			else if(Arrows[Left].yPosition >= 39 && Arrows[Left].yPosition <= 50){
+			else if((Arrows[Left].yPosition >= 63) && (Arrows[Left].yPosition <= 74)){
 				//Combo = 0 and Display Miss..
-				ST7735_DrawPicture(1, 0, Miss, 106, 18);
+				ST7735_DrawBitmap(1, 12, Miss, 71, 12);
 				Combo = 0;
+				missflag = 1;
 				isTouch(4);
 			}
 		}
-		if((GPIO_PORTE_DATA_R & 0x02) == 1){	//Down Check
+		if((GPIO_PORTE_DATA_R & 0x02) == 2){	//Down Check
 			// Add in Combo and Perfect/Good/Miss 
-			if(Arrows[Down].yPosition >= 22 && Arrows[Down].yPosition <= 28){
+			if((Arrows[Down].yPosition >= 44) && (Arrows[Down].yPosition <= 52)){
 				//Combo++ and Display Perfect
-				ST7735_DrawPicture(1, 0, Perfect, 106, 18);
+				ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
+				Score+=12500;
+				PerfectC++;
 				Combo++;
+				missflag = 0;
 				isTouch(36);
 			}
-			else if(Arrows[Down].yPosition >= 29 && Arrows[Down].yPosition <= 38){
+			else if((Arrows[Down].yPosition >= 53) && (Arrows[Down].yPosition <= 62)){
 				//Combo++ and Display Good
-				ST7735_DrawPicture(1, 0, Good, 105, 18);
+				ST7735_FillRect(71, 0, 1, 12, 0x0000);
+				ST7735_DrawBitmap(1, 12, Good, 70, 12);
+				Score+=6250;
+				GoodC++;
 				Combo++;
+				missflag = 0;
 				isTouch(36);
 			}
-			else if(Arrows[Down].yPosition >= 39 && Arrows[Down].yPosition <= 50){
+			else if((Arrows[Down].yPosition >= 63) && (Arrows[Down].yPosition <= 74)){
 				//Combo = 0 and Display Miss..
-				ST7735_DrawPicture(1, 0, Miss, 106, 18);
+				ST7735_DrawBitmap(1, 12, Miss, 71, 12);
 				Combo = 0;
+				missflag = 1;
 				isTouch(36);
 			}
 		}
-		if((GPIO_PORTE_DATA_R & 0x04) == 1){	//Up Check
+		if((GPIO_PORTE_DATA_R & 0x04) == 4){	//Up Check
 		// Add in Combo and Perfect/Good/Miss 
-			if(Arrows[Up].yPosition >= 22 && Arrows[Up].yPosition <= 28){
+			if((Arrows[Up].yPosition >= 44) && (Arrows[Up].yPosition <= 52)){
 				//Combo++ and Display Perfect
-				ST7735_DrawPicture(1, 0, Perfect, 106, 18);
+				ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
+				Score+=12500;
+				PerfectC++;
 				Combo++;
+				missflag = 0;
 				isTouch(68);
 			}
-			else if(Arrows[Up].yPosition >= 29 && Arrows[Up].yPosition <= 38){
+			else if((Arrows[Up].yPosition >= 53) && (Arrows[Up].yPosition <= 62)){
 				//Combo++ and Display Good
-				ST7735_DrawPicture(1, 0, Good, 105, 18);
+				ST7735_FillRect(71, 0, 1, 12, 0x0000);
+				ST7735_DrawBitmap(1, 12, Good, 70, 12);
+				Score+=6250;
+				GoodC++;
 				Combo++;
+				missflag = 0;
 				isTouch(68);
 			}
-			else if(Arrows[Up].yPosition >= 39 && Arrows[Up].yPosition <= 50){
+			else if((Arrows[Up].yPosition >= 63) && (Arrows[Up].yPosition <= 74)){
 				//Combo = 0 and Display Miss..
-				ST7735_DrawPicture(1, 0, Miss, 106, 18);
+				ST7735_DrawBitmap(1, 12, Miss, 71, 12);
 				Combo = 0;
+				missflag = 1;
 				isTouch(68);
 			}
 		}
-		if((GPIO_PORTE_DATA_R & 0x8) == 1){	//Right Check
+		if((GPIO_PORTE_DATA_R & 0x8) == 8){	//Right Check
 		// Add in Combo and Perfect/Good/Miss 
-			if(Arrows[Right].yPosition >= 22 && Arrows[Right].yPosition <= 28){
+			if((Arrows[Right].yPosition >= 44) && (Arrows[Right].yPosition <= 52)){
 				//Combo++ and Display Perfect
-				ST7735_DrawPicture(1, 0, Perfect, 106, 18);
+				ST7735_DrawBitmap(1, 12, Perfect, 71, 12);
+				Score+=12500;
+				PerfectC++;
 				Combo++;
+				missflag = 0;
 				isTouch(100);
 			}
-			else if(Arrows[Right].yPosition >= 29 && Arrows[Right].yPosition <= 38){
+			else if((Arrows[Right].yPosition >= 53) && (Arrows[Right].yPosition <= 62)){
 				//Combo++ and Display Good
-				ST7735_DrawPicture(1, 0, Good, 105, 18);
+				ST7735_FillRect(71, 0, 1, 12, 0x0000);
+				ST7735_DrawBitmap(1, 12, Good, 70, 12);
+				Score+=6250;
+				GoodC++;
 				Combo++;
+				missflag = 0;
 				isTouch(100);
 			}
-			else if(Arrows[Right].yPosition >= 39 && Arrows[Right].yPosition <= 50){
+			else if((Arrows[Right].yPosition >= 63) && (Arrows[Right].yPosition <= 74)){
 				//Combo = 0 and Display Miss..
-				ST7735_DrawPicture(1, 0, Miss, 106, 18);
+				ST7735_DrawBitmap(1, 12, Miss, 71, 12);
 				Combo = 0;
+				missflag = 1;
 				isTouch(100);
 			}
 		}
+		
+		if(Combo > MaxCombo){MaxCombo =  Combo;}
+		
 		ST7735_DrawBitmap(4, 48, Static_Left, 24, 24);
 		if(checkarr[Left]==1){
-			ST7735_FillRect(Arrows[Left].xPosition, (Arrows[Left].yPosition + 1), 0x0000, 24, 24);
 			ST7735_DrawPicture(Arrows[Left].xPosition, Arrows[Left].yPosition, Arrow_Left, 24, 24);
 			Arrows[Left].yPosition--;
 		}
-		isTouch(Left); // Check Left
+		if(isTouch(Left) == 1){ST7735_DrawBitmap(1, 12, Miss, 71, 12);} // Check Left
 		
 		ST7735_DrawBitmap(36, 48, Static_Down, 24, 24);
 		if(checkarr[Down]==1){
-			ST7735_FillRect(Arrows[Down].xPosition, (Arrows[Down].yPosition + 1), 0x0000, 24, 24);
 			ST7735_DrawPicture(Arrows[Down].xPosition, Arrows[Down].yPosition, Arrow_Down, 24, 24);
 			Arrows[Down].yPosition--;
 		}
-		isTouch(Down);	// Check Down
+		if(isTouch(Down) == 1){ST7735_DrawBitmap(1, 12, Miss, 71, 12);}	// Check Down
 
 		ST7735_DrawBitmap(68, 48, Static_Up, 24, 24);		
 		if(checkarr[Up]==1){
-			ST7735_FillRect(Arrows[Up].xPosition, (Arrows[Up].yPosition + 1), 0x0000, 24, 24);
 			ST7735_DrawPicture(Arrows[Up].xPosition, Arrows[Up].yPosition, Arrow_Up, 24, 24);
 			Arrows[Up].yPosition--;
 		}
-		isTouch(Up);	//Check Up
+		if(isTouch(Up) == 1){ST7735_DrawBitmap(1, 12, Miss, 71, 12);}	//Check Up
 		
 		ST7735_DrawBitmap(100, 48, Static_Right, 24, 24);		
 		if(checkarr[Right]==1){
-			ST7735_FillRect(Arrows[Right].xPosition, (Arrows[Right].yPosition + 1), 0x0000, 24, 24);
 			ST7735_DrawPicture(Arrows[Right].xPosition, Arrows[Right].yPosition, Arrow_Right, 24, 24);
 			Arrows[Right].yPosition--;
 		}
-		isTouch(Right);	//Check Right
+		if(isTouch(Right) == 1){ST7735_DrawBitmap(1, 12, Miss, 71, 12);}	//Check Right
 		
 		// DISPLAY COMBO HERE
 		ST7735_FillRect(74, 1, 0x0000, 50, 12);
@@ -237,34 +291,75 @@ int main(void){
 		ST7735_OutString("Combo:");
 		ST7735_SetCursor(14, 1);
 		LCD_OutDec(Combo);
-		for(int c = 0; c < 200000 *((Convert(ADC_In())/666)+3)/4; c++){}						//everthing between 1.0cm-2.0cm is base speed
-		TIMER1_TAILR_R=(40000 *((Convert(ADC_In())/666)+3)/4)-1;
+		
+		Convert(ADC_In());
+		for(int c = 0; c < 100; c++){}									
+		TIMER1_TAILR_R = period;
 		count++;
   }
 	
 	IO_Touch();
 	ST7735_FillScreen(0x0000);            // set screen to black
-	ST7735_SetCursor(1, 1);
-	ST7735_OutString("GAME OVER");
-	ST7735_SetCursor(1, 2);
-	ST7735_OutString("Nice try,");
+	for(int c = 0; c < 1000000; c++){}								// Display Grade of Notes hit
 	ST7735_SetCursor(1, 3);
-	ST7735_OutString("Earthling!");
-	ST7735_SetCursor(2, 4);
-	LCD_OutDec(1234);
+	ST7735_OutString("Perfect:");	
+	for(int c = 0; c < 500000; c++){}
+	ST7735_SetCursor(9, 3);
+	LCD_OutDec(PerfectC);
+	for(int c = 0; c < 500000; c++){}
+	ST7735_SetCursor(1, 4);
+	ST7735_SetTextColor(0xABE0);
+	ST7735_OutString("Good:");	
+	for(int c = 0; c < 500000; c++){}
+	ST7735_SetCursor(6, 4);
+	LCD_OutDec(GoodC);
+	for(int c = 0; c < 500000; c++){}
+	ST7735_SetTextColor(0x39BF);
+	ST7735_SetCursor(1, 5);
+	ST7735_OutString("Miss:");	
+	for(int c = 0; c < 500000; c++){}
+	ST7735_SetCursor(6, 5);
+	LCD_OutDec(MissC);
+	for(int c = 0; c < 1000000; c++){}
+	
+	ST7735_SetTextColor(0x039F);
+	ST7735_SetCursor(1, 7);
+	ST7735_OutString("Max Combo:");			
+	for(int c = 0; c < 500000; c++){}
+	ST7735_SetCursor(11, 7);
+	LCD_OutDec(MaxCombo);															// Display Max Combo
+	for(int c = 0; c < 1000000; c++){}	
+	ST7735_SetTextColor(0xFFFF);
+	ST7735_SetCursor(1, 9);
+	ST7735_OutString("Final Score:");
+	for(int c = 0; c < 500000; c++){}
+	ST7735_SetCursor(13, 9);
+	LCD_OutDec(Score);																// Display Final Score
+	for(int c = 0; c < 1000000; c++){}	
+	
+	ST7735_SetTextColor(0x7A0C);
+	if(Score == 1000000){															// Display Final Assessment 
+	ST7735_SetCursor(1, 11);
+	ST7735_OutString("Perfect!");
+	for(int c = 0; c < 500000; c++){}	
+	}		
+	else if((Score < 1000000) && (Score >= 850000)){
+	ST7735_SetCursor(1, 11);
+	ST7735_OutString("Amazing!");
+	for(int c = 0; c < 500000; c++){}	
+	}
+	else if((Score < 8500000) && (Score >= 700000)){
+	ST7735_SetCursor(1, 11);
+	ST7735_OutString("Good Job :)");
+	for(int c = 0; c < 500000; c++){}	
+	}
+	else if((Score < 7000000)){
+	ST7735_SetCursor(1, 11);
+	ST7735_OutString("Better Luck");
+	ST7735_SetCursor(1, 12);
+	ST7735_OutString("Next Time");
+	for(int c = 0; c < 500000; c++){}	
+	}
 
 
-}
-
-
-// You can't use this timer, it is here for starter code only 
-// you must use interrupts to perform delays
-void Delay100ms(uint32_t count){uint32_t volatile time;
-  while(count>0){
-    time = 727240;  // 0.1sec at 80 MHz
-    while(time){
-	  	time--;
-    }
-    count--;
-  }
 }

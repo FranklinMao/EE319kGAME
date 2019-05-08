@@ -457,6 +457,11 @@
               <FileType>5</FileType>
               <FilePath>.\Arrow.h</FilePath>
             </File>
+            <File>
+              <FileName>Etterna.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Etterna.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -31,5 +31,6 @@
 //          period in units (1/clockfreq)
 // Outputs: none
 void Timer1_Init(uint32_t period);
-
+extern int si;
+extern int end;
 #endif // __TIMER2INTS_H__

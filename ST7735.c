@@ -801,11 +801,11 @@ void ST7735_DrawPixel(int16_t x, int16_t y, uint16_t color) {
   pushColor(color);
 }
 
-void ST7735_DrawPicture( int16_t x, int16_t y, const uint16_t *image, int16_t ix, int16_t iy){
+void ST7735_DrawPicture( int16_t x, int16_t y, const uint16_t *image, int16_t ix, int16_t iy){ // Transparent Background
 	int index = 0;
 			for(int i = y; i > (y-iy); i--){
 				for(int j = x; j < (x+ix); j++){
-					if(image[index] != 0x0F0F){
+					if(image[index] != 0x0F0F){							// Transparent Pixel Value: 0x0F0F
 						ST7735_DrawPixel(j, i, image[index]);
 					}
 					index++;

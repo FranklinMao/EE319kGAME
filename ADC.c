@@ -14,11 +14,11 @@
 // measures from PD2, analog channel 5
 void ADC_Init(void){ 
 	SYSCTL_RCGCGPIO_R |= 0x08;
-	int volatile ddelay = 4444;
+	for(int c = 0; c < 1000000; c++){}
 	GPIO_PORTD_DIR_R &= ~0x04;
 	GPIO_PORTD_DEN_R |= 0x04;
 	SYSCTL_RCGCADC_R |= 0x01;				//active adc0
-	int volatile cdelay = 4444;
+	for(int c = 0; c < 1000000; c++){}
 	ADC0_PC_R = 0x01;			// configure for 125k
 	ADC0_SSPRI_R = 0x0123;	// seq 3 is highest priority
 	ADC0_ACTSS_R &= ~0x0008;		// disable sample sequencer 3

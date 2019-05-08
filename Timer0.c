@@ -50,19 +50,19 @@ void Timer0_Init(uint32_t period){
 
 void Timer0A_Handler(void){
   TIMER0_ICR_R = TIMER_ICR_TATOCINT;// acknowledge TIMER0A timeout
-	if(count==Leftarray[LeftIndex]){
+	if(count==Leftarray[songc][LeftIndex]){
 		checkarr[0]=1;												//if count reaches a predetermined value in leftarray, set left arrow to on
 		LeftIndex++;													// go to next sequence in leftarray
 	}
-	if(count==Downarray[DownIndex]){
+	if(count==Downarray[songc][DownIndex]){
 		checkarr[1]=1;												
 		DownIndex++;
 	}
-	if(count==Uparray[UpIndex]){
+	if(count==Uparray[songc][UpIndex]){
 		checkarr[2]=1;												
 		UpIndex++;
 	}
-	if(count==Rightarray[RightIndex]){
+	if(count==Rightarray[songc][RightIndex]){
 		checkarr[3]=1;												
 		RightIndex++;
 	}

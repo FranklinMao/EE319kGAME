@@ -11,6 +11,7 @@
 
 #include "../inc/tm4c123gh6pm.h"
 #include <stdint.h>
+#include "Sound.h"
 
 //------------IO_Init------------
 // Initialize GPIO Port for a switch and an LED
@@ -58,4 +59,19 @@ void IO_Touch(void) {
 	}
  // --UUU-- wait for release; delay for 20ms; and then wait for press
 }  
+
+void IO_Choice(void){
+while(((GPIO_PORTF_DATA_R&0X10)>>4)==1){	
+	if(GPIO_PORTE_DATA_R == 1){
+		SC = 80;
+	}
+	else if(GPIO_PORTE_DATA_R == 2){
+		SC = 84;
+	}
+}
+	for(int i=0;i<1600000;i++){
+	}																	//delay for 20ms
+	while(((GPIO_PORTF_DATA_R&0x10)>>4)==0){
+	}
+}
 
