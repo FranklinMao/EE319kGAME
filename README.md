@@ -7,8 +7,8 @@ for the arrow mechanics.
 Materials:
 -ARM Cortex-M TM4C Microcontroller
 -ST7735R LCD Display
--Potentialmeter
+-Potentiometer
 -ADC
 -DAC
 -Switches
-Video Demo: https://www.youtube.com/watch?v=f_j6aQS-b20&feature=share&fbclid=IwAR3O9YnqhQ90lSW8IFky4eUSS_GNoST02Ayg_t1uFHUgOhkE4fxRQD0_zBw
+Video Demo: https://youtu.be/eh6ZrvnCsNA
